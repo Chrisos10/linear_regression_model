@@ -37,7 +37,8 @@ In the three models built;
 - Linear Regression
 - Decision Trees
 - Random Forest
-The model was chosen basing on the lowest Root Mean Squared Error (RMSE) and was selected and saved using pickle.
+
+The best performing model was chosen basing on the lowest Root Mean Squared Error (RMSE) and was selected and saved using pickle. Linear regression model was the best.
 
 
 # Task 2: API Development
