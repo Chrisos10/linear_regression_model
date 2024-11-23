@@ -1,4 +1,4 @@
-# Energy Consumption Prediction Project
+# Energy Consumption Prediction Model
 This repository contains a comprehensive implementation of a Regression Model to predict energy consumption, alongside an API and a Flutter mobile app for making real-time predictions.
 
 The idea to build such a model is based on the mission which states,
