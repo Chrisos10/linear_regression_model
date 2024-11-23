@@ -10,7 +10,7 @@ While it is advisable to read this whole readme, feel free to jump in at first (
 
 https://energy-prediction-t29f.onrender.com
 
-It will directly redirect you to the UI, click on Post and then thr try it out buttons. Fill in the values and predict.
+It will directly redirect you to the UI, click on 'Post' and then the 'try it out' buttons. Fill in the values and predict.
 # Project Overview
 The project is divided into the following key tasks:
 
