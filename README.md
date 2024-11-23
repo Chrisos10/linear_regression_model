@@ -2,16 +2,20 @@
 This repository contains a comprehensive implementation of a Regression Model to predict energy consumption, alongside an API and a Flutter mobile app for making real-time predictions.
 
 The idea to build such a model is based on the mission which states,
-"Facilitating sustainable infrastructure development by harnessing cutting-edge technological solutions, fostering innovation, and building resilient systems."
 
-With the energy prediction model,from households to institutional buildings and other multi-purpose buildings, informed decisions can be made on how to take action on the energy being consumed sustainably.
+**"Facilitating sustainable infrastructure development by harnessing cutting-edge technological solutions, fostering innovation, and building resilient systems."**
+
+# Dataset
+The dataset used for this project encapsulates a diverse array of features, including temperature, humidity, occupancy, HVAC and lighting usage, renewable energy contributions, and more. Each timestamp provides a snapshot of a hypothetical environment, allowing for in-depth analysis and modeling of energy consumption behaviors. it can be found here: 
+
+https://www.kaggle.com/datasets/mrsimple07/energy-consumption-prediction?select=Energy_consumption.csv
 
 While it is advisable to read this whole readme, feel free to jump in at first (If already familiar with these concepts) on this Swagger UI and test it:
 
 https://energy-prediction-t29f.onrender.com
 
 It will directly redirect you to the UI, click on 'Post' and then the 'try it out' buttons. Fill in the values and predict.
-# Project Overview
+# General Project Overview
 The project is divided into the following key tasks:
 
 - ## Task 1: Regression Models
@@ -25,11 +29,6 @@ Building regression models (Linear regression, Random Forest, and Decision tree 
 - Holiday
 - DayOfWeek
 - RenewableEnergyvariables.
-
-# Dataset
-The dataset used for this project is focused on energy consumption and includes multiple numerical and categorical features. it can be found here: 
-
-https://www.kaggle.com/datasets/mrsimple07/energy-consumption-prediction?select=Energy_consumption.csv
 
 # Best Performing Model Evaluation 
 In the three models built namely;
@@ -63,8 +62,6 @@ A demovideo showcasing the whole process can be found at:
 ## Python Dependencies
 Install Python dependencies using the requirements.txt file:
 
-bash
-Copy code
 ```
 pip install -r requirements.txt
 ```
@@ -83,8 +80,7 @@ Navigate to the API directory and start the FastAPI server:
 ```
 uvicorn main:app --reload
 ```
-Access Swagger UI at: 
-https://energy-prediction-t29f.onrender.com
+Using services like postman use the localhost url provided to test the api
 
 
 3. Use the Flutter App
