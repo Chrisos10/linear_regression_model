@@ -1,6 +1,11 @@
 # Energy Consumption Prediction Project
 This repository contains a comprehensive implementation of a Regression Model to predict energy consumption, alongside an API and a Flutter mobile app for making real-time predictions.
 
+The idea to build such a model is based on the mission which states,
+"Facilitating sustainable infrastructure development by harnessing cutting-edge technological solutions, fostering innovation, and building resilient systems."
+
+With the energy prediction model,from households to institutional buildings and other multi-purpose buildings, informed decisions can be made on how to take action on the energy being consumed sustainably.
+
 # Project Overview
 The project is divided into the following key tasks:
 
