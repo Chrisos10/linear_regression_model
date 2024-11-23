@@ -84,20 +84,6 @@ Connect the app to the hosted API.
 Input prediction values in the app and view the results.
 4. Test the Application
 Use the app and Swagger UI for testing and demonstration.
-File Structure
-
-├── model/
-│   ├── Energy_consumption.csv     # Dataset used for training
-│   ├── linear_model.sav           # Saved model file
-│   ├── encoders.pkl               # Saved OneHotEncoders
-├── api/
-│   ├── main.py                    # FastAPI app
-│   ├── requirements.txt           # Python dependencies
-├── app/
-│   ├── lib/
-│   │   ├── main.dart              # Flutter app entry point
-├── multivariate.ipynb             # Jupyter notebook for training
-├── README.md                      # Project documentation
 
 # Deployment
 - API Hosting: The API is hosted on Render and can be accessed at: Swagger UI
