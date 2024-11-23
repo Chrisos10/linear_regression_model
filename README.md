@@ -33,8 +33,8 @@ Building regression models (Linear regression, Random Forest, and Decision tree 
 - RenewableEnergyvariables.
 
 # Best Performing Model Evaluation 
-In the three models built namely;
-_ Linear Regression
+In the three models built;
+- Linear Regression
 - Decision Trees
 - Random Forest
 The model was chosen basing on the lowest Root Mean Squared Error (RMSE) and was selected and saved using pickle.
