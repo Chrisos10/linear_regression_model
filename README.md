@@ -97,3 +97,5 @@ Use the app and Swagger UI for testing and demonstration.
 - Flutter App: Deployed on a physical or virtual mobile device.
 # Results
 Best Model: linear regression model with the lowest RMSE of 5.01.
+Swagger UI for testing: https://energy-prediction-t29f.onrender.com
+Video Demo:  
