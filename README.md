@@ -6,6 +6,9 @@ The idea to build such a model is based on the mission which states,
 
 With the energy prediction model,from households to institutional buildings and other multi-purpose buildings, informed decisions can be made on how to take action on the energy being consumed sustainably.
 
+While it is advisable to read this whole readme, feel free to jump in at first (If already familiar with these concepts) on this Swagger UI and test it:
+https://energy-prediction-t29f.onrender.com
+
 # Project Overview
 The project is divided into the following key tasks:
 
@@ -78,7 +81,10 @@ Navigate to the API directory and start the FastAPI server:
 ```
 uvicorn main:app --reload
 ```
-Access Swagger UI at: http://127.0.0.1:8000/docs
+Access Swagger UI at: 
+https://energy-prediction-t29f.onrender.com
+
+
 3. Use the Flutter App
 Connect the app to the hosted API.
 Input prediction values in the app and view the results.
