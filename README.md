@@ -7,8 +7,10 @@ The idea to build such a model is based on the mission which states,
 With the energy prediction model,from households to institutional buildings and other multi-purpose buildings, informed decisions can be made on how to take action on the energy being consumed sustainably.
 
 While it is advisable to read this whole readme, feel free to jump in at first (If already familiar with these concepts) on this Swagger UI and test it:
+
 https://energy-prediction-t29f.onrender.com
 
+It will directly redirect you to the UI, click on Post and then thr try it out buttons. Fill in the values and predict.
 # Project Overview
 The project is divided into the following key tasks:
 
