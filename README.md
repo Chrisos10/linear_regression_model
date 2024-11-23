@@ -5,6 +5,8 @@ The idea to build such a model is based on the mission which states,
 
 **"Facilitating sustainable infrastructure development by harnessing cutting-edge technological solutions, fostering innovation, and building resilient systems."**
 
+Making infrastructures sustainable is a wide concept. Optimizing the energy consumed by infrastructures like buildings and other facilities can be a step closer to having resilient systems and hence, the implementation of such a project to forecast the future and take suitable actions
+
 # Dataset
 The dataset used for this project encapsulates a diverse array of features, including temperature, humidity, occupancy, HVAC and lighting usage, renewable energy contributions, and more. Each timestamp provides a snapshot of a hypothetical environment, allowing for in-depth analysis and modeling of energy consumption behaviors. it can be found here: 
 
