@@ -5,6 +5,7 @@ import pickle
 import logging
 import pandas as pd
 from starlette.middleware.base import BaseHTTPMiddleware
+from fastapi.responses import RedirectResponse
 
 # Basic logging configuration
 logging.basicConfig(level=logging.INFO)
@@ -41,6 +42,13 @@ class model_input(BaseModel):
     DayOfWeek: str  # Categorical input
     Holiday: str  # Categorical input
     EnergyConsumption_L1: float = Field(..., ge=0)  # Previous energy consumption value
+
+
+@app.get("/")
+def redirect_to_docs():
+    return RedirectResponse(url="/docs")
+
+
 
 # Define the POST endpoint
 @app.post('/predictor')
