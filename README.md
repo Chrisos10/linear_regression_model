@@ -16,7 +16,13 @@ While it is advisable to read this whole readme, feel free to jump in at first (
 
 https://energy-prediction-t29f.onrender.com
 
+
 It will directly redirect you to the UI, click on 'Post' and then the 'try it out' buttons. Fill in the values and predict.
+
+
+Or get the whole idea of the project in this demo:
+
+https://www.youtube.com/watch?v=Z88kItSRJLE
 # General Project Overview
 The project is divided into the following key tasks:
 
@@ -84,6 +90,8 @@ flutter emulators --launch emulator_name
 # Task 4: Demo Video
 A demovideo showcasing the whole process can be found at:
 
+https://www.youtube.com/watch?v=Z88kItSRJLE
+
 
 ## Python Dependencies
 Install Python dependencies using the requirements.txt file:
@@ -123,4 +131,4 @@ Best Model: linear regression model with the lowest RMSE of 5.01.
 
 Swagger UI for testing: https://energy-prediction-t29f.onrender.com
 
-Video Demo:  
+Video Demo:  https://www.youtube.com/watch?v=Z88kItSRJLE
