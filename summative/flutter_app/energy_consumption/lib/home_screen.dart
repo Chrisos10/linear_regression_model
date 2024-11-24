@@ -139,17 +139,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Positioned.fill(
                   child: Align(
-                    alignment: Alignment.center,
+                    alignment: Alignment.topCenter,
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      color: Colors.black54,
-                      child: const Text(
-                        'Anticipate energy demand surges and energy shortages to create adaptable and robust systems.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
+                      // color: Colors.black54,
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 16.0),
+                        child: Text(
+                          'Anticipate energy demand surges and energy shortages to create adaptable and robust systems.',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontStyle: FontStyle.italic,
+                            fontSize: 13.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
@@ -222,11 +226,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
-                'Predicted Energy To Be Consumed',
+                'RESULT: ',
                 style: TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
@@ -237,9 +241,9 @@ class _HomeScreenState extends State<HomeScreen> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: Text(
-                'The Predicted Energy to be Consumed Is: $predictedValue Unit',
+                'The Predicted Energy to be Consumed is: \n $predictedValue Units',
                 style: const TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 14.0,
                   color: Colors.black,
                 ),
               ),
