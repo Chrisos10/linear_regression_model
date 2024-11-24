@@ -58,6 +58,29 @@ A Flutter-based mobile application was built to interact with the API:
 - Display Area: Displays the prediction result or error messages.
 - User-Friendly Interface: Ensures a clean and organized layout for better usability.
 
+When running the flutter app on your local device, make sure that you follow the instructions below
+
+Clone the repo
+```
+git clone <repository_url>
+```
+
+Go to root directory
+```
+cd summative/flutter_app/energy_consumption
+```
+
+Install the dependencies
+
+```
+flutter pub get
+```
+
+Connect your emulator 
+```
+flutter emulators --launch emulator_name
+
+```
 # Task 4: Demo Video
 A demovideo showcasing the whole process can be found at:
 
