@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:convert'; // For JSON encoding/decoding
+import 'package:http/http.dart' as http; // For HTTP requests
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,12 +16,84 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController occupancyController = TextEditingController();
   final TextEditingController hvacUsageController = TextEditingController();
   final TextEditingController lightingUsageController = TextEditingController();
-  final TextEditingController renewableEnergyController = TextEditingController();
+  final TextEditingController renewableEnergyController =
+      TextEditingController();
   final TextEditingController dayOfWeekController = TextEditingController();
   final TextEditingController holidayController = TextEditingController();
-  final TextEditingController energyUsedPreviouslyController = TextEditingController();
+  final TextEditingController energyUsedPreviouslyController =
+      TextEditingController();
 
   final ScrollController _scrollController = ScrollController();
+  String predictedValue = "(Predicted Value)";
+  bool isLoading = false;
+
+  Future<void> predictEnergy() async {
+    // Validate inputs
+    if (temperatureController.text.isEmpty ||
+        humidityController.text.isEmpty ||
+        squareFootageController.text.isEmpty ||
+        occupancyController.text.isEmpty ||
+        hvacUsageController.text.isEmpty ||
+        lightingUsageController.text.isEmpty ||
+        renewableEnergyController.text.isEmpty ||
+        dayOfWeekController.text.isEmpty ||
+        holidayController.text.isEmpty ||
+        energyUsedPreviouslyController.text.isEmpty) {
+      setState(() {
+        predictedValue = "Please fill in all required fields.";
+      });
+      return;
+    }
+
+    // Gather input values
+    final input = {
+      "Temperature": double.tryParse(temperatureController.text) ?? 0.0,
+      "Humidity": double.tryParse(humidityController.text) ?? 0.0,
+      "SquareFootage": double.tryParse(squareFootageController.text) ?? 0.0,
+      "Occupancy": int.tryParse(occupancyController.text) ?? 0,
+      "HVACUsage": hvacUsageController.text.trim(),
+      "LightingUsage": lightingUsageController.text.trim(),
+      "RenewableEnergy": double.tryParse(renewableEnergyController.text) ?? 0.0,
+      "DayOfWeek": dayOfWeekController.text.trim(),
+      "Holiday": holidayController.text.trim(),
+      "EnergyConsumption_L1":
+          double.tryParse(energyUsedPreviouslyController.text) ?? 0.0,
+    };
+
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      // Send POST request to API
+      final response = await http.post(
+        Uri.parse("https://energy-prediction-t29f.onrender.com/predictor"),
+        headers: {"Content-Type": "application/json"},
+        body: json.encode(input),
+      );
+
+      // Handle response
+      if (response.statusCode == 200) {
+        final responseData = json.decode(response.body);
+        setState(() {
+          predictedValue = responseData['prediction']?.toStringAsFixed(2) ??
+              "No value returned";
+        });
+      } else {
+        setState(() {
+          predictedValue = "Error: ${response.body}";
+        });
+      }
+    } catch (e) {
+      setState(() {
+        predictedValue = "Failed to connect to the server.";
+      });
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       color: Colors.black54,
                       child: const Text(
-                        'Anticipate Energy demand surges and energy shortages to create adaptable and robust systems.',
+                        'Anticipate energy demand surges and energy shortages to create adaptable and robust systems.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
@@ -106,38 +180,44 @@ class _HomeScreenState extends State<HomeScreen> {
                     childAspectRatio: 3.5,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      _buildTextField('Temperature (°C)', temperatureController),
+                      _buildTextField(
+                          'Temperature (°C)', temperatureController),
                       _buildTextField('Humidity', humidityController),
-                      _buildTextField('Square Footage', squareFootageController),
+                      _buildTextField(
+                          'Square Footage', squareFootageController),
                       _buildTextField('Occupancy', occupancyController),
-                      _buildTextField('HVAC Usage', hvacUsageController),
-                      _buildTextField('Lighting Usage', lightingUsageController),
-                      _buildTextField('Renewable Energy', renewableEnergyController),
+                      _buildTextField('HVAC Usage (On/Off)', hvacUsageController),
+                      _buildTextField(
+                          'Lighting Usage (On/Off)', lightingUsageController),
+                      _buildTextField(
+                          'Renewable Energy', renewableEnergyController),
                       _buildTextField('Day Of The Week', dayOfWeekController),
-                      _buildTextField('Holiday', holidayController),
-                      _buildTextField('Energy Used Previously', energyUsedPreviouslyController),
+                      _buildTextField('Holiday (Yes/No)', holidayController),
+                      _buildTextField('Energy Used Previously',
+                          energyUsedPreviouslyController),
                     ],
                   ),
                   const SizedBox(height: 10),
                   ElevatedButton(
-                    onPressed: () {
-                      print("Predict button pressed!");
-                    },
+                    onPressed: isLoading ? null : predictEnergy,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(21, 34, 56, 1),
-                      padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 20.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 6.0, horizontal: 20.0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
                       ),
                     ),
-                    child: const Text(
-                      'Predict',
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
+                    child: isLoading
+                        ? const CircularProgressIndicator(color: Colors.white)
+                        : const Text(
+                            'Predict',
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
                   ),
                 ],
               ),
@@ -153,11 +233,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: Text(
-                'The Predicted Energy to be Consumed Is: (Predicted Value)',
-                style: TextStyle(
+                'The Predicted Energy to be Consumed Is: $predictedValue Unit',
+                style: const TextStyle(
                   fontSize: 16.0,
                   color: Colors.black,
                 ),
@@ -188,7 +269,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           filled: true,
           fillColor: const Color(0xFFF2F2F2),
-          contentPadding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
         ),
         style: const TextStyle(fontSize: 14),
       ),
